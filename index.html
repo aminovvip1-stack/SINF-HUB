@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#0f172a">
+
+    <title>Sinf Hub</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <!-- ========================================
+         HOME
+    ========================================= -->
+
+    <main id="homePage" class="home-page">
+
+        <section class="hero-card">
+
+            <div class="brand-logo">
+                S
+            </div>
+
+            <p class="eyebrow">
+                SINF PLATFORMASI
+            </p>
+
+            <h1>
+                Sinf Hub
+            </h1>
+
+            <p class="hero-description">
+                Uy vazifalari, e’lonlar, sinfdoshlar va
+                suhbatlar — hammasi bitta joyda.
+            </p>
+
+            <div class="login-grid">
+
+                <button
+                    class="login-card teacher-login"
+                    onclick="teacherLogin()"
+                >
+                    <span class="login-icon">
+                        👨‍🏫
+                    </span>
+
+                    <span class="login-info">
+                        <strong>O‘qituvchi</strong>
+                        <small>Teacher panelga kirish</small>
+                    </span>
+
+                    <span class="login-arrow">
+                        →
+                    </span>
+                </button>
+
+
+                <button
+                    class="login-card student-login"
+                    onclick="studentLogin()"
+                >
+                    <span class="login-icon">
+                        👨‍🎓
+                    </span>
+
+                    <span class="login-info">
+                        <strong>O‘quvchi</strong>
+                        <small>Student panelga kirish</small>
+                    </span>
+
+                    <span class="login-arrow">
+                        →
+                    </span>
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================================
+         APP
+    ========================================= -->
+
+    <div id="appShell" class="app-shell hidden">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <div class="sidebar-logo">
+                    S
+                </div>
+
+                <div>
+                    <strong>Sinf Hub</strong>
+                    <small>Sinf platformasi</small>
+                </div>
+
+            </div>
+
+
+            <nav id="teacherNavigation" class="navigation hidden">
+
+                <button
+                    class="nav-item active"
+                    onclick="showTeacherDashboard()"
+                >
+                    <span>🏠</span>
+                    Bosh sahifa
+                </button>
+
+                <button
+                    class="nav-item"
+                    onclick="showHomeworkSection()"
+                >
+                    <span>📚</span>
+                    Uy vazifalari
+                </button>
+
+                <button
+                    class="nav-item"
+                    onclick="showStudentsSection()"
+                >
+                    <span>👨‍🎓</span>
+                    O‘quvchilar
+                </button>
+
+                <button
+                    class="nav-item"
+                    onclick="showTeachersSection()"
+                >
+                    <span>👨‍🏫</span>
+                    O‘qituvchilar
+                </button>
+
+                <button
+                    class="nav-item"
+                    onclick="showAnnouncementsSection()"
+                >
+                    <span>📢</span>
+                    E’lonlar
+                </button>
+
+                <button
+                    class="nav-item"
+                    onclick="openChat()"
+                >
+                    <span>💬</span>
+                    Chat
+                </button>
+
+            </nav>
+
+
+            <nav id="studentNavigation" class="navigation hidden">
+
+                <button
+                    class="nav-item active"
+                    onclick="showStudentDashboard()"
+                >
+                    <span>🏠</span>
+                    Bosh sahifa
+                </button>
+
+                <button
+                    class="nav-item"
+                    onclick="showStudentHomeworkSection()"
+                >
+                    <span>📚</span>
+                    Uy vazifalari
+                </button>
+
+                <button
+                    class="nav-item"
+                    onclick="showStudentAnnouncementSection()"
+                >
+                    <span>📢</span>
+                    E’lonlar
+                </button>
+
+                <button
+                    class="nav-item"
+                    onclick="openChat()"
+                >
+                    <span>💬</span>
+                    Chat
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    class="sidebar-profile"
+                    onclick="openProfile()"
+                >
+
+                    <div
+                        id="sidebarAvatar"
+                        class="avatar avatar-medium"
+                    >
+                        S
+                    </div>
+
+                    <div class="sidebar-profile-info">
+
+                        <strong id="sidebarUserName">
+                            Foydalanuvchi
+                        </strong>
+
+                        <small id="sidebarUserRole">
+                            O‘quvchi
+                        </small>
+
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="logout-button"
+                    onclick="logout()"
+                >
+                    🚪 Chiqish
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MOBILE TOPBAR -->
+
+        <header class="mobile-header">
+
+            <div class="sidebar-brand">
+
+                <div class="sidebar-logo">
+                    S
+                </div>
+
+                <strong>Sinf Hub</strong>
+
+            </div>
+
+            <button
+                class="mobile-profile-button"
+                onclick="openProfile()"
+            >
+                <div
+                    id="mobileAvatar"
+                    class="avatar avatar-small"
+                >
+                    S
+                </div>
+            </button>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <main class="app-content">
+
+
+            <!-- =================================
+                 TEACHER DASHBOARD
+            ================================== -->
+
+            <section
+                id="teacherDashboard"
+                class="page-section hidden"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+                        <p class="eyebrow">
+                            O‘QITUVCHI PANELI
+                        </p>
+
+                        <h1>
+                            Xush kelibsiz 👋
+                        </h1>
+
+                        <p>
+                            Sinfingizni bitta joydan boshqaring.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-grid">
+
+                    <button
+                        class="stat-card"
+                        onclick="showHomeworkSection()"
+                    >
+                        <span class="stat-icon blue">
+                            📚
+                        </span>
+
+                        <span>
+                            <strong id="homeworkCount">
+                                0
+                            </strong>
+
+                            <small>
+                                Uy vazifalari
+                            </small>
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="stat-card"
+                        onclick="showStudentsSection()"
+                    >
+                        <span class="stat-icon green">
+                            👨‍🎓
+                        </span>
+
+                        <span>
+                            <strong id="studentCount">
+                                0
+                            </strong>
+
+                            <small>
+                                O‘quvchilar
+                            </small>
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="stat-card"
+                        onclick="showAnnouncementsSection()"
+                    >
+                        <span class="stat-icon orange">
+                            📢
+                        </span>
+
+                        <span>
+                            <strong id="announcementCount">
+                                0
+                            </strong>
+
+                            <small>
+                                E’lonlar
+                            </small>
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="stat-card"
+                        onclick="openChat()"
+                    >
+                        <span class="stat-icon purple">
+                            💬
+                        </span>
+
+                        <span>
+                            <strong>Chat</strong>
+
+                            <small>
+                                Sinf suhbatlari
+                            </small>
+                        </span>
+                    </button>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="card-heading">
+                        <div>
+                            <h2>So‘nggi vazifalar</h2>
+                            <p>Yaqinda qo‘shilgan uy vazifalari</p>
+                        </div>
+
+                        <button
+                            class="secondary-button"
+                            onclick="showHomeworkSection()"
+                        >
+                            Barchasi →
+                        </button>
+                    </div>
+
+                    <div id="dashboardHomeworkList"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 STUDENT DASHBOARD
+            ================================== -->
+
+            <section
+                id="studentDashboard"
+                class="page-section hidden"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+                        <p class="eyebrow">
+                            O‘QUVCHI PANELI
+                        </p>
+
+                        <h1 id="studentGreeting">
+                            Xush kelibsiz 👋
+                        </h1>
+
+                        <p>
+                            Vazifalar va sinf yangiliklarini kuzating.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-grid">
+
+                    <button
+                        class="stat-card"
+                        onclick="showStudentHomeworkSection()"
+                    >
+                        <span class="stat-icon blue">
+                            📚
+                        </span>
+
+                        <span>
+                            <strong id="studentHomeworkCount">
+                                0
+                            </strong>
+
+                            <small>
+                                Uy vazifalari
+                            </small>
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="stat-card"
+                        onclick="showStudentAnnouncementSection()"
+                    >
+                        <span class="stat-icon orange">
+                            📢
+                        </span>
+
+                        <span>
+                            <strong id="studentAnnouncementCount">
+                                0
+                            </strong>
+
+                            <small>
+                                E’lonlar
+                            </small>
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="stat-card"
+                        onclick="openChat()"
+                    >
+                        <span class="stat-icon purple">
+                            💬
+                        </span>
+
+                        <span>
+                            <strong>Chat</strong>
+
+                            <small>
+                                Sinfdoshlar bilan
+                            </small>
+                        </span>
+                    </button>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="card-heading">
+                        <div>
+                            <h2>Uy vazifalari</h2>
+                            <p>Eng so‘nggi vazifalar</p>
+                        </div>
+                    </div>
+
+                    <div id="studentDashboardHomework"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 HOMEWORK
+            ================================== -->
+
+            <section
+                id="homeworkSection"
+                class="page-section hidden"
+            >
+
+                <div class="page-heading heading-with-action">
+
+                    <div>
+                        <p class="eyebrow">
+                            VAZIFALAR
+                        </p>
+
+                        <h1>
+                            📚 Uy vazifalari
+                        </h1>
+
+                        <p>
+                            Sinf uchun berilgan vazifalar.
+                        </p>
+                    </div>
+
+                    <button
+                        id="addHomeworkButton"
+                        class="primary-button hidden"
+                        onclick="openHomeworkModal()"
+                    >
+                        + Yangi vazifa
+                    </button>
+
+                </div>
+
+                <div
+                    id="modernHomeworkList"
+                    class="cards-list"
+                ></div>
+
+            </section>
+
+
+            <!-- =================================
+                 STUDENTS
+            ================================== -->
+
+            <section
+                id="studentsSection"
+                class="page-section hidden"
+            >
+
+                <div class="page-heading heading-with-action">
+
+                    <div>
+                        <p class="eyebrow">
+                            SINF
+                        </p>
+
+                        <h1>
+                            👨‍🎓 O‘quvchilar
+                        </h1>
+
+                        <p>
+                            Sinf o‘quvchilarini boshqaring.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openStudentModal()"
+                    >
+                        + O‘quvchi
+                    </button>
+
+                </div>
+
+                <div
+                    id="modernStudentList"
+                    class="people-list"
+                ></div>
+
+            </section>
+
+
+            <!-- =================================
+                 TEACHERS
+            ================================== -->
+
+            <section
+                id="teachersSection"
+                class="page-section hidden"
+            >
+
+                <div class="page-heading heading-with-action">
+
+                    <div>
+                        <p class="eyebrow">
+                            O‘QITUVCHILAR
+                        </p>
+
+                        <h1>
+                            👨‍🏫 O‘qituvchilar
+                        </h1>
+
+                        <p>
+                            Platformadagi o‘qituvchilar.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openTeacherModal()"
+                    >
+                        + O‘qituvchi
+                    </button>
+
+                </div>
+
+                <div
+                    id="modernTeacherList"
+                    class="people-list"
+                ></div>
+
+            </section>
+
+
+            <!-- =================================
+                 ANNOUNCEMENTS
+            ================================== -->
+
+            <section
+                id="announcementsSection"
+                class="page-section hidden"
+            >
+
+                <div class="page-heading heading-with-action">
+
+                    <div>
+                        <p class="eyebrow">
+                            YANGILIKLAR
+                        </p>
+
+                        <h1>
+                            📢 E’lonlar
+                        </h1>
+
+                        <p>
+                            Sinf uchun muhim xabarlar.
+                        </p>
+                    </div>
+
+                    <button
+                        id="addAnnouncementButton"
+                        class="primary-button hidden"
+                        onclick="openAnnouncementModal()"
+                    >
+                        + Yangi e’lon
+                    </button>
+
+                </div>
+
+                <div
+                    id="modernAnnouncementList"
+                    class="cards-list"
+                ></div>
+
+            </section>
+
+        </main>
+
+
+        <!-- MOBILE NAVIGATION -->
+
+        <nav class="mobile-nav">
+
+            <button onclick="mobileGoHome()">
+                <span>🏠</span>
+                <small>Bosh sahifa</small>
+            </button>
+
+            <button onclick="mobileGoHomework()">
+                <span>📚</span>
+                <small>Vazifalar</small>
+            </button>
+
+            <button onclick="openChat()">
+                <span>💬</span>
+                <small>Chat</small>
+            </button>
+
+            <button onclick="mobileGoAnnouncements()">
+                <span>📢</span>
+                <small>E’lonlar</small>
+            </button>
+
+            <button onclick="openProfile()">
+                <span>👤</span>
+                <small>Profil</small>
+            </button>
+
+        </nav>
+
+    </div>
+
+
+    <!-- ========================================
+         CHAT
+    ========================================= -->
+
+    <div id="chatWorkspace" class="chat-workspace hidden">
+
+        <!-- CHAT SIDEBAR -->
+
+        <aside class="chat-sidebar">
+
+            <div class="chat-sidebar-header">
+
+                <button
+                    class="icon-button"
+                    onclick="closeChat()"
+                >
+                    ←
+                </button>
+
+                <div>
+                    <strong>Chat</strong>
+                    <small>Sinf Hub</small>
+                </div>
+
+            </div>
+
+
+            <div class="chat-search">
+                <span>🔎</span>
+
+                <input
+                    type="text"
+                    placeholder="Qidirish..."
+                    disabled
+                >
+            </div>
+
+
+            <div class="chat-conversation-list">
+
+                <button
+                    class="conversation-item active"
+                    onclick="openPublicChat()"
+                >
+
+                    <div class="avatar public-avatar">
+                        🌐
+                    </div>
+
+                    <div class="conversation-item-info">
+                        <strong>Ommaviy chat</strong>
+                        <small>Barcha sinf a’zolari</small>
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="conversation-item"
+                    onclick="openPrivateChatList()"
+                >
+
+                    <div class="avatar private-avatar">
+                        👤
+                    </div>
+
+                    <div class="conversation-item-info">
+                        <strong>Individual chat</strong>
+                        <small>Shaxsiy suhbat</small>
+                    </div>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- CHAT MAIN -->
+
+        <section class="chat-main">
+
+            <header class="conversation-header">
+
+                <button
+                    class="chat-mobile-back"
+                    onclick="showChatSidebar()"
+                >
+                    ←
+                </button>
+
+                <div
+                    id="conversationAvatar"
+                    class="avatar avatar-medium public-avatar"
+                >
+                    🌐
+                </div>
+
+                <div class="conversation-title">
+
+                    <strong id="conversationTitle">
+                        Ommaviy chat
+                    </strong>
+
+                    <small id="conversationSubtitle">
+                        Barcha sinf a’zolari
+                    </small>
+
+                </div>
+
+            </header>
+
+
+            <!-- PRIVATE USER SELECTOR -->
+
+            <div
+                id="privateUserBar"
+                class="private-user-bar hidden"
+            >
+
+                <select
+                    id="chatUserSelect"
+                    onchange="selectPrivateConversation()"
+                >
+                    <option value="">
+                        Suhbatdoshni tanlang
+                    </option>
+                </select>
+
+            </div>
+
+
+            <!-- PUBLIC MESSAGES -->
+
+            <div
+                id="publicMessages"
+                class="messages-area"
+            ></div>
+
+
+            <!-- PRIVATE MESSAGES -->
+
+            <div
+                id="privateMessages"
+                class="messages-area hidden"
+            ></div>
+
+
+            <!-- COMPOSER -->
+
+            <div class="chat-composer">
+
+                <div
+                    id="emojiPicker"
+                    class="emoji-picker hidden"
+                ></div>
+
+                <button
+                    class="composer-icon"
+                    onclick="toggleEmojiPicker()"
+                    aria-label="Emoji"
+                >
+                    😊
+                </button>
+
+                <input
+                    id="messageInput"
+                    type="text"
+                    placeholder="Xabar yozing..."
+                    autocomplete="off"
+                    onkeydown="handleChatEnter(event)"
+                >
+
+                <button
+                    class="send-button"
+                    onclick="sendCurrentMessage()"
+                    aria-label="Yuborish"
+                >
+                    ➤
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- ========================================
+         PROFILE MODAL
+    ========================================= -->
+
+    <div id="profileModal" class="modal-overlay hidden">
+
+        <div class="modal profile-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Mening profilim</h2>
+                    <p>Profil rasmi va ma’lumotlar</p>
+                </div>
+
+                <button
+                    class="close-button"
+                    onclick="closeProfile()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="profile-content">
+
+                <div
+                    id="profileAvatar"
+                    class="avatar profile-avatar"
+                >
+                    S
+                </div>
+
+                <h2 id="profileName">
+                    Foydalanuvchi
+                </h2>
+
+                <p id="profileRole">
+                    O‘quvchi
+                </p>
+
+
+                <label
+                    for="profilePhotoInput"
+                    class="photo-upload-button"
+                >
+                    📷 Rasm tanlash
+                </label>
+
+                <input
+                    id="profilePhotoInput"
+                    type="file"
+                    accept="image/*"
+                    hidden
+                    onchange="previewProfilePhoto(event)"
+                >
+
+
+                <p class="profile-note">
+                    Rasm 1:1 kvadrat shaklga moslanadi va
+                    dumaloq avatar sifatida ko‘rinadi.
+                </p>
+
+
+                <div class="profile-buttons">
+
+                    <button
+                        class="primary-button"
+                        onclick="saveProfilePhoto()"
+                    >
+                        Saqlash
+                    </button>
+
+                    <button
+                        class="danger-light-button"
+                        onclick="removeProfilePhoto()"
+                    >
+                        Rasmni o‘chirish
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         HOMEWORK MODAL
+    ========================================= -->
+
+    <div id="homeworkModal" class="modal-overlay hidden">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Yangi uy vazifasi</h2>
+                    <p>Vazifa ma’lumotlarini kiriting</p>
+                </div>
+
+                <button
+                    class="close-button"
+                    onclick="closeHomeworkModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Fan</label>
+
+                <input
+                    id="subject"
+                    type="text"
+                    placeholder="Masalan: Matematika"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Uy vazifasi</label>
+
+                <textarea
+                    id="homeworkText"
+                    rows="5"
+                    placeholder="Vazifani yozing..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Topshirish sanasi</label>
+
+                <input
+                    id="homeworkDate"
+                    type="date"
+                >
+
+            </div>
+
+
+            <button
+                class="primary-button full-button"
+                onclick="saveHomework()"
+            >
+                Vazifani saqlash
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         STUDENT MODAL
+    ========================================= -->
+
+    <div id="studentModal" class="modal-overlay hidden">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Yangi o‘quvchi</h2>
+                    <p>O‘quvchi akkauntini yarating</p>
+                </div>
+
+                <button
+                    class="close-button"
+                    onclick="closeStudentModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Ismi</label>
+
+                <input
+                    id="studentName"
+                    type="text"
+                    placeholder="O‘quvchi ismi"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Parol</label>
+
+                <input
+                    id="studentPassword"
+                    type="password"
+                    placeholder="Parol"
+                >
+
+            </div>
+
+
+            <button
+                class="primary-button full-button"
+                onclick="saveStudent()"
+            >
+                O‘quvchini qo‘shish
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         TEACHER MODAL
+    ========================================= -->
+
+    <div id="teacherModal" class="modal-overlay hidden">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Yangi o‘qituvchi</h2>
+                    <p>O‘qituvchi akkauntini yarating</p>
+                </div>
+
+                <button
+                    class="close-button"
+                    onclick="closeTeacherModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Ismi</label>
+
+                <input
+                    id="teacherName"
+                    type="text"
+                    placeholder="O‘qituvchi ismi"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Parol</label>
+
+                <input
+                    id="teacherNewPassword"
+                    type="password"
+                    placeholder="Parol"
+                >
+
+            </div>
+
+
+            <button
+                class="primary-button full-button"
+                onclick="saveTeacher()"
+            >
+                O‘qituvchini qo‘shish
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         ANNOUNCEMENT MODAL
+    ========================================= -->
+
+    <div id="announcementModal" class="modal-overlay hidden">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Yangi e’lon</h2>
+                    <p>Sinf uchun xabar qo‘shing</p>
+                </div>
+
+                <button
+                    class="close-button"
+                    onclick="closeAnnouncementModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Sarlavha</label>
+
+                <input
+                    id="announcementTitle"
+                    type="text"
+                    placeholder="E’lon sarlavhasi"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>E’lon</label>
+
+                <textarea
+                    id="announcementText"
+                    rows="5"
+                    placeholder="E’lon matni..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Sana</label>
+
+                <input
+                    id="announcementDate"
+                    type="date"
+                >
+
+            </div>
+
+
+            <button
+                class="primary-button full-button"
+                onclick="saveAnnouncement()"
+            >
+                E’lonni saqlash
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
